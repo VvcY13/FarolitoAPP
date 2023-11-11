@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "250687283296",
+    "firebase_url": "https://pruebabd-25310-default-rtdb.firebaseio.com",
+    "project_id": "pruebabd-25310",
+    "storage_bucket": "pruebabd-25310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250687283296:android:dd361e7619b3030a6c2305",
+        "android_client_info": {
+          "package_name": "com.example.app_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyJ5_rdEbOEQ8-Of1fGYJk0MaaLeYBc28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250687283296:android:875ad26d5544759d6c2305",
+        "android_client_info": {
+          "package_name": "com.example.farolito"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyJ5_rdEbOEQ8-Of1fGYJk0MaaLeYBc28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

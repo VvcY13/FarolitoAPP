@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="@drawable/fondofarolito">
+
+    <TextView
+        android:id="@+id/titulo_bienvenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\nLOGIN ADMINISTRADOR"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF">
+
+    </TextView>
+
+    <!-- Campo de Usuario -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuario:"
+        android:layout_marginStart="50dp"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="250dp" />
+
+    <EditText
+        android:id="@+id/adminLoginAdministrador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Introduzca su usuario"
+        android:background="@drawable/edittext_background"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:padding="10dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Campo de Contraseña -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña:"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/contraseñaLoginAdministrador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Introduzca su contraseña"
+        android:inputType="textPassword"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edittext_background"
+        android:padding="10dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Botón de Iniciar Sesión -->
+    <Button
+        android:id="@+id/logearseAdministrador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Sesión"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:background="#007BFF"
+        android:layout_marginTop="16dp" />
+
+
+</LinearLayout>
