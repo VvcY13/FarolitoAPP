@@ -59,6 +59,7 @@ public class LogoMozo extends AppCompatActivity {
                                         System.out.println(usuarioID);
                                         Intent ventanamesas = new Intent(getApplicationContext(),SalonPrincipal.class);
                                         startActivity(ventanamesas);
+
                                         return;
                                     }
                                 }

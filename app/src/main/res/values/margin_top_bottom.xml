@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <dimen name="button_margin_top_bottom">10dp</dimen>
+        <!-- Otros recursos de dimensiones -->
+
+</resources>

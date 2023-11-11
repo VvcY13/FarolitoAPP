@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -40,7 +41,21 @@ public class SalonPrincipal extends AppCompatActivity {
                 int idMesa = snapshot.child("idMesa").getValue(Integer.class);
                 Button mesaButton = new Button(SalonPrincipal.this);
                 mesaButton.setText("Mesa " + idMesa);
+
                 mesaButton.setTag(idMesa);
+                mesaButton.setBackgroundColor(getResources().getColor(R.color.celeste));
+
+                // Crear los parámetros de diseño con los márgenes deseados
+                ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+                int marginTopBottom = getResources().getDimensionPixelSize(R.dimen.button_margin_top_bottom); // Obtener el valor del margen superior e inferior desde los recursos
+                layoutParams.setMargins(0, marginTopBottom, 0, marginTopBottom); // Establecer los márgenes
+
+                mesaButton.setLayoutParams(layoutParams); // Aplicar los parámetros de diseño al botón
+
+
                 mesasList.add(mesaButton);
                 ordenarMesas();
 
@@ -50,6 +65,7 @@ public class SalonPrincipal extends AppCompatActivity {
                         idmesaseleccionada = idMesa;
                         System.out.println(idmesaseleccionada);
                         Intent ventanadentrodemesa = new Intent(getApplicationContext(),Mesas.class);
+                        ventanadentrodemesa.putExtra("idmesaseleccionado", idmesaseleccionada);
                         startActivity(ventanadentrodemesa);
                     }
                 });
