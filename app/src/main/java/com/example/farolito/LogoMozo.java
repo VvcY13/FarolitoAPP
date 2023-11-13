@@ -57,9 +57,13 @@ public class LogoMozo extends AppCompatActivity {
                                         Toast.makeText(LogoMozo.this, "Inicio exitoso", Toast.LENGTH_SHORT).show();
                                         usuarioID = user.getIdUsuario();
                                         System.out.println(usuarioID);
+                                        String identificador = Integer.toString(usuarioID);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("identificadorUsuario", identificador);
                                         txtloginUsuario.setText("");
                                         txtcontraseñaUsuario.setText("");
                                         Intent ventanamesas = new Intent(getApplicationContext(),SalonPrincipal.class);
+                                        ventanamesas.putExtras(bundle);
                                         startActivity(ventanamesas);
 
                                         return;

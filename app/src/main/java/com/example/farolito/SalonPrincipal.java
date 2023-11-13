@@ -31,6 +31,10 @@ public class SalonPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salon_principal);
+
+        Bundle bundle = getIntent().getExtras();
+        String identifier = bundle.getString("identificadorUsuario");
+        System.out.println("aqui esta el identificador del usuario " +identifier);
         contenedorMesas = findViewById(R.id.contenedor_mesas);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -65,6 +69,7 @@ public class SalonPrincipal extends AppCompatActivity {
                         System.out.println(idmesaseleccionada);
                         Intent ventanadentrodemesa = new Intent(getApplicationContext(),Mesas.class);
                         ventanadentrodemesa.putExtra("idmesaseleccionado", idmesaseleccionada);
+                        ventanadentrodemesa.putExtra("idusuario", identifier);
                         startActivity(ventanadentrodemesa);
                     }
                 });

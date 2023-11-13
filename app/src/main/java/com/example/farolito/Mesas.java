@@ -20,6 +20,7 @@ public class Mesas extends AppCompatActivity implements productoSeleccionadoList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mesas);
+
         titulo = findViewById(R.id.tvTituloEncima);
         comidas = new Comidas_Fragment();
         bebidas = new Bebidas_Fragment();
@@ -27,8 +28,13 @@ public class Mesas extends AppCompatActivity implements productoSeleccionadoList
         getSupportFragmentManager().beginTransaction().add(R.id.contenedorFragments, comidas).commit();
 
         int idSeleccionado = getIntent().getIntExtra("idmesaseleccionado", 0);
-
+        String identificadorID = getIntent().getStringExtra("idusuario");
+        int identificadorUsuario = Integer.parseInt(identificadorID);
+        System.out.println("aqui el identificador de mesa " +idSeleccionado);
+        System.out.println("aqui en identificador del empleado " +identificadorUsuario );
         titulo.setText(String.valueOf("Mesa " + idSeleccionado));
+
+        comanda.setDatos(idSeleccionado, identificadorUsuario);
 
     }
     public void onClick(View view){

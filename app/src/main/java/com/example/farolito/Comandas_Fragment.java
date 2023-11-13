@@ -88,5 +88,9 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
     public void onNombreProductoObtenido(String nombreProducto) {
         Log.d(TAG, "Nombre del producto obtenido: " + nombreProducto);
     }
+    public void setDatos(int idMesa, int idEmpleado) {
+        System.out.println("Datos recibidos en el fragmentComanda - ID Mesa: " + idMesa);
+        System.out.println("Datos recibidos en el fragmentComanda - ID Empleado: " + idEmpleado);
+    }
 
 }
