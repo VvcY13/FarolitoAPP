@@ -45,15 +45,14 @@ public class SalonPrincipal extends AppCompatActivity {
                 mesaButton.setTag(idMesa);
                 mesaButton.setBackgroundColor(getResources().getColor(R.color.celeste));
 
-                // Crear los parámetros de diseño con los márgenes deseados
                 ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 );
-                int marginTopBottom = getResources().getDimensionPixelSize(R.dimen.button_margin_top_bottom); // Obtener el valor del margen superior e inferior desde los recursos
-                layoutParams.setMargins(0, marginTopBottom, 0, marginTopBottom); // Establecer los márgenes
+                int marginTopBottom = getResources().getDimensionPixelSize(R.dimen.button_margin_top_bottom);
+                layoutParams.setMargins(0, marginTopBottom, 0, marginTopBottom);
 
-                mesaButton.setLayoutParams(layoutParams); // Aplicar los parámetros de diseño al botón
+                mesaButton.setLayoutParams(layoutParams);
 
 
                 mesasList.add(mesaButton);

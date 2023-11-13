@@ -2,4 +2,29 @@
     <string name="app_name">Farolito</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_registroadministrador">Registroadministrador</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string-array name="Categorias">
+        <item>Entrada</item>
+        <item>Fondo</item>
+        <item>Piqueo</item>
+        <item>Bebida</item>
+    </string-array>
+    <string-array name="Tipo">
+        <item>Comidas</item>
+        <item>Bebidas</item>
+    </string-array>
+    <string-array name="Ubicacion">
+        <item>Salon</item>
+        <item>Terraza</item>
+        <item>Bar</item>
+        <item>Segundo Piso</item>
+    </string-array>
+
+
+
 </resources>

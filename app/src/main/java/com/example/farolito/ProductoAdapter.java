@@ -17,25 +17,25 @@ import java.util.List;
 public class ProductoAdapter extends ArrayAdapter<Producto> {
     private List<Producto> listaDeProductos;
 
-    public ProductoAdapter(Context context, List<Producto> listaDeProductos) {
+    public ProductoAdapter(Context context, List<Producto> listaDeProductos){
         super(context, 0, listaDeProductos);
         this.listaDeProductos = listaDeProductos;
     }
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+        }
 
-        @NonNull
-        @Override
-        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-            }
-
-            TextView textView = convertView.findViewById(android.R.id.text1);
-            if (!listaDeProductos.isEmpty() && position < listaDeProductos.size()) {
-                Producto producto = listaDeProductos.get(position);
-                textView.setText(producto.getNombreProducto());
-            } else {
-                Log.e("ProductoAdapter", "Lista de productos vacía o posición inválida");
-            }
-            return convertView;
+        TextView textView = convertView.findViewById(android.R.id.text1);
+        if (!listaDeProductos.isEmpty() && position < listaDeProductos.size()) {
+            Producto producto = listaDeProductos.get(position);
+            textView.setText(producto.getNombreProducto());
+        } else {
+            Log.e("ProductoAdapter", "Lista de productos vacía o posición inválida");
+        }
+        return convertView;
     }
+
 }

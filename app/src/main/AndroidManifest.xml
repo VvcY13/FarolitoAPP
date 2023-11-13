@@ -13,6 +13,32 @@
         android:theme="@style/Theme.Farolito"
         tools:targetApi="31">
         <activity
+            android:name=".Registrousuario"
+            android:exported="false" />
+        <activity
+            android:name=".Registroproducto"
+            android:exported="false" />
+        <activity
+            android:name=".Registromesa"
+            android:exported="false" />
+        <activity
+            android:name=".Registroadministrador"
+            android:exported="false"
+            android:label="@string/title_activity_registroadministrador"
+            android:theme="@style/Theme.Farolito" />
+        <activity
+            android:name=".Gestionadministrador"
+            android:exported="false" />
+        <activity
+            android:name=".Gestionusuario"
+            android:exported="false" />
+        <activity
+            android:name=".Gestionproducto"
+            android:exported="false" />
+        <activity
+            android:name=".Gestionmesa"
+            android:exported="false" />
+        <activity
             android:name=".OpcionesAdmin"
             android:exported="false" />
         <activity

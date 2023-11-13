@@ -41,20 +41,26 @@
 
         <Button
             android:id="@+id/btnComida"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClick"
             android:text="Comida" />
 
         <Button
             android:id="@+id/btnBebidas"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
             android:layout_height="wrap_content"
             android:text="Bebidas" />
 
         <Button
             android:id="@+id/btnComanda"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClick"
             android:text="Comanda" />
 
     </LinearLayout>

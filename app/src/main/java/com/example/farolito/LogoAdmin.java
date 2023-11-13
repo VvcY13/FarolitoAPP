@@ -52,6 +52,8 @@ public class LogoAdmin extends AppCompatActivity {
                                     Administrador admin = Snapshot.getValue(Administrador.class);
                                     if(admin.getContraseña().equals(contraseñatxt)){
                                         Toast.makeText(LogoAdmin.this, "Inicio exitoso", Toast.LENGTH_SHORT).show();
+                                        txtusuarioAdmin.setText("");
+                                        txtcontraseñaAdmin.setText("");
                                         Intent ventanaAdmin = new Intent(getApplicationContext(),OpcionesAdmin.class);
                                         startActivity(ventanaAdmin);
                                         return;

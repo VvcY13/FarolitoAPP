@@ -1,15 +1,28 @@
 package com.example.farolito.Entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Comanda {
+    private  static Comanda instance;
     private int idComanda;
     private double total;
     private  int idEmpleado;
     private int idMesa;
     private List<DetalleComanda> detalle;
 
-    public Comanda() {
+    private Comanda() {
+        detalle = new ArrayList<>();
+    }
+    public static Comanda getInstance() {
+        if (instance == null) {
+            synchronized (Comanda.class) {
+                if (instance == null) {
+                    instance = new Comanda();
+                }
+            }
+        }
+        return instance;
     }
 
     public Comanda(int idComanda, double total, int idEmpleado, int idMesa, List<DetalleComanda> detalle) {

@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class Mesas extends AppCompatActivity {
+import com.example.farolito.Entidades.DetalleComanda;
+import com.example.farolito.Interfaces.productoSeleccionadoListener;
+
+public class Mesas extends AppCompatActivity implements productoSeleccionadoListener {
     private TextView titulo;
     private Comidas_Fragment comidas;
     private  Bebidas_Fragment bebidas;
@@ -27,9 +30,6 @@ public class Mesas extends AppCompatActivity {
 
         titulo.setText(String.valueOf("Mesa " + idSeleccionado));
 
-
-
-
     }
     public void onClick(View view){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -42,5 +42,12 @@ public class Mesas extends AppCompatActivity {
             transaction.replace(R.id.contenedorFragments,comanda);
         }
         transaction.commit();
+    }
+
+    @Override
+    public void productoSeleccionado(DetalleComanda detalleComanda) {
+        if (comanda != null) {
+            comanda.productoSeleccionado(detalleComanda);
+        }
     }
 }

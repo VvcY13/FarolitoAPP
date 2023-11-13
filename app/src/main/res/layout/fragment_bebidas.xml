@@ -6,7 +6,10 @@
     android:background="@color/crema"
     tools:context=".Bebidas_Fragment">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
         android:id="@+id/linear_layout_bebidas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,5 +19,7 @@
         android:layout_marginStart="30dp"
         android:padding="16dp">
     </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>

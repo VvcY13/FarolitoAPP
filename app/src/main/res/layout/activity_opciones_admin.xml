@@ -22,43 +22,56 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btncerrar"
+        android:id="@+id/btnmesas"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/celeste"
-        android:text="Cerrar Sesión"
+        android:text="Gestionar Mesas"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.579" />
 
     <Button
-        android:id="@+id/btnfacturas"
+        android:id="@+id/btnadministrador"
         android:layout_width="275dp"
         android:layout_height="48dp"
         android:backgroundTint="@color/celeste"
-        android:text="Ver Facturas"
+        android:text="Gestionar Administracion"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintVertical_bias="0.216" />
 
     <Button
-        android:id="@+id/btnpersonal"
+        android:id="@+id/btnusuarios"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/celeste"
-        android:text="Ver Personal"
+        android:text="Gestionar Meseros"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintVertical_bias="0.411" />
+
+    <Button
+        android:id="@+id/btnproductos"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/celeste"
+        android:text="Gestionar Productos"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
