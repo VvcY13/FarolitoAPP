@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -22,8 +23,12 @@ import com.example.farolito.Interfaces.DetalleComandaAdapterCallback;
 import com.example.farolito.Interfaces.productoSeleccionadoListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +36,12 @@ import java.util.List;
 public class Comandas_Fragment extends Fragment implements productoSeleccionadoListener, DetalleComandaAdapterCallback {
     private List<DetalleComanda> listaProductosSeleccionados = new ArrayList<>();
     private List<Producto> listaProductos = new ArrayList<>();
+    private DatabaseReference mesasRef;
 
     private Button enviarPedido;
     private int idMesa;
     private int idEmpleado;
+    private boolean nuevaDisponibilidad = false;
 
         public Comandas_Fragment() {
     }
@@ -86,6 +93,27 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
                comandasRef.push().setValue(comanda).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        mesasRef = database.getReference("Mesa");
+
+
+                        mesasRef.orderByChild("idMesa").equalTo(idMesa).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                for (DataSnapshot mesaSnapshot : snapshot.getChildren()) {
+                                    mesaSnapshot.getRef().child("disponibilidadMesa").setValue(nuevaDisponibilidad);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+
                         Toast.makeText(getActivity(), "Comanda enviada con éxito", Toast.LENGTH_SHORT).show();
                     }
                 });

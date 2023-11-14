@@ -44,11 +44,19 @@ public class SalonPrincipal extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 int idMesa = snapshot.child("idMesa").getValue(Integer.class);
+                boolean disponibilidad = snapshot.child("disponibilidadMesa").getValue(Boolean.class);
+
                 Button mesaButton = new Button(SalonPrincipal.this);
                 mesaButton.setText("Mesa " + idMesa);
 
                 mesaButton.setTag(idMesa);
-                mesaButton.setBackgroundColor(getResources().getColor(R.color.celeste));
+
+                if (disponibilidad) {
+                    mesaButton.setBackgroundColor(getResources().getColor(R.color.verde));
+                } else {
+                    mesaButton.setBackgroundColor(getResources().getColor(R.color.rojo));
+                }
+
 
                 ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
@@ -80,9 +88,29 @@ public class SalonPrincipal extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                int idMesa = snapshot.child("idMesa").getValue(Integer.class);
+                boolean disponibilidad = snapshot.child("disponibilidadMesa").getValue(Boolean.class);
 
+                Button mesaButton = encontrarBotonPorId(idMesa);
+
+                if (mesaButton != null) {
+
+                    if (disponibilidad) {
+                        mesaButton.setBackgroundColor(getResources().getColor(R.color.verde));
+                    } else {
+                        mesaButton.setBackgroundColor(getResources().getColor(R.color.rojo));
+                    }
+                }
             }
-
+            private Button encontrarBotonPorId(int idMesaBuscado) {
+                for (Button mesaButton : mesasList) {
+                    int mesaId = (int) mesaButton.getTag();
+                    if (mesaId == idMesaBuscado) {
+                        return mesaButton;
+                    }
+                }
+                return null;
+            }
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 String mesaKey = snapshot.getKey();
@@ -108,6 +136,7 @@ public class SalonPrincipal extends AppCompatActivity {
 
             }
         });
+
     }
     private void ordenarMesas() {
 
