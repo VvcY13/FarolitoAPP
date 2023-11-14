@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.farolito.Entidades.Administrador;
+import com.example.farolito.Entidades.Mesa;
 import com.example.farolito.Entidades.Producto;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Gestionproducto extends AppCompatActivity {
     private Button agregarproducto,modificarproducto,borrarproducto,buscarProducto;
@@ -71,6 +74,12 @@ public class Gestionproducto extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Producto producto = snapshot.getValue(Producto.class);
                 listaproducto.add(producto);
+                Collections.sort(listaproducto, new Comparator<Producto>() {
+                    @Override
+                    public int compare(Producto producto1, Producto producto2) {
+                        return Integer.compare(producto1.getIdProducto(), producto2.getIdProducto());
+                    }
+                });
                 adapterproducto.notifyDataSetChanged();
             }
 

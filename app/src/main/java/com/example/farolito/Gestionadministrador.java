@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.farolito.Entidades.Administrador;
+import com.example.farolito.Entidades.Mesa;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Gestionadministrador extends AppCompatActivity {
 
@@ -73,6 +76,12 @@ public class Gestionadministrador extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Administrador admin = snapshot.getValue(Administrador.class);
                 listadmin.add(admin);
+                Collections.sort(listadmin, new Comparator<Administrador>() {
+                    @Override
+                    public int compare(Administrador admin1, Administrador admin2) {
+                        return Integer.compare(admin1.getId(), admin2.getId());
+                    }
+                });
                 adapteradmin.notifyDataSetChanged();
             }
 

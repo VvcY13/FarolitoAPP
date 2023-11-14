@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.farolito.Entidades.Producto;
 import com.example.farolito.Entidades.Usuario;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Gestionusuario extends AppCompatActivity {
     private Button agregarUser,borrarUser,buscarusuariouser;
@@ -65,6 +68,12 @@ public class Gestionusuario extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Usuario user = snapshot.getValue(Usuario.class);
                 listausuarios.add(user);
+                Collections.sort(listausuarios, new Comparator<Usuario>() {
+                    @Override
+                    public int compare(Usuario usuario1, Usuario usuario2) {
+                        return Integer.compare(usuario1.getIdUsuario(), usuario2.getIdUsuario());
+                    }
+                });
                 adapterusuarios.notifyDataSetChanged();
             }
 

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,12 +26,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Gestionmesa extends AppCompatActivity {
     private Button agregarmesa,modificarmesa,borrarmesa,buscarMesa;
     private EditText idmesa,getubicacionmesa;
     private ArrayList<Mesa> listamesa;
     private ListView listamesas;
+    private DatabaseReference mesasRef;
+    private boolean nuevaDisponibilidad = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,12 @@ public class Gestionmesa extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Mesa mesa = snapshot.getValue(Mesa.class);
                 listamesa.add(mesa);
+                Collections.sort(listamesa, new Comparator<Mesa>() {
+                    @Override
+                    public int compare(Mesa mesa1, Mesa mesa2) {
+                        return Integer.compare(mesa1.getIdMesa(), mesa2.getIdMesa());
+                    }
+                });
                 adaptermesa.notifyDataSetChanged();
             }
 
@@ -97,17 +108,67 @@ public class Gestionmesa extends AppCompatActivity {
           @Override
           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
               Mesa mesa = listamesa.get(i);
-              AlertDialog.Builder a = new AlertDialog.Builder(Gestionmesa.this);
-              a.setCancelable(true);
-              a.setTitle("Mesa");
-              String msg = "ID : " +mesa.getIdMesa() + "\n\n";
-              msg += "Ubicacion : " + mesa.getUbicacionMesa() + "\n\n";
-              msg += "Capacidad : " + mesa.getCapacidadMesa() + " Personas "+ "\n\n";
+              AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Gestionmesa.this);
+              alertDialogBuilder.setCancelable(true);
+              alertDialogBuilder.setTitle("Cambiar disponibilidad de la mesa");
 
-              a.setMessage(msg);
-              a.show();
-          }
-      });
+              alertDialogBuilder.setPositiveButton("Disponible", new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialogInterface, int which) {
+                      FirebaseDatabase database = FirebaseDatabase.getInstance();
+                      DatabaseReference mesaRef = database.getReference("Mesa");
+
+                      int idMesa = mesa.getIdMesa();
+                      System.out.println("aqui esta el id = "+idMesa);
+
+
+                      mesaRef.orderByChild("idMesa").equalTo(idMesa).addListenerForSingleValueEvent(new ValueEventListener() {
+                          @Override
+                          public void onDataChange(@NonNull DataSnapshot snapshot) {
+                              for (DataSnapshot mesaSnapshot : snapshot.getChildren()) {
+                                  mesaSnapshot.getRef().child("disponibilidadMesa").setValue(true);
+                                  listarMesa();
+                              }
+                          }
+
+                          @Override
+                          public void onCancelled(@NonNull DatabaseError error) {
+
+                          }
+                      });
+                  }
+
+              });
+
+              alertDialogBuilder.setNegativeButton("No disponible", new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialogInterface, int which) {
+                  FirebaseDatabase database = FirebaseDatabase.getInstance();
+                  DatabaseReference mesaRef = database.getReference("Mesa");
+
+                      int idMesa = mesa.getIdMesa();
+                      System.out.println("aqui esta el id = "+idMesa);
+
+                  mesaRef.orderByChild("idMesa").equalTo(idMesa).addListenerForSingleValueEvent(new ValueEventListener() {
+                      @Override
+                      public void onDataChange(@NonNull DataSnapshot snapshot) {
+                          for (DataSnapshot mesaSnapshot : snapshot.getChildren()) {
+                              mesaSnapshot.getRef().child("disponibilidadMesa").setValue(false);
+                              listarMesa();
+                          }
+                      }
+
+                      @Override
+                      public void onCancelled(@NonNull DatabaseError error) {
+
+                      }
+                  });
+              }
+          });
+
+    alertDialogBuilder.show();
+    };
+    });
     }
     public void BuscarMesa() {
         buscarMesa.setOnClickListener(new View.OnClickListener() {
