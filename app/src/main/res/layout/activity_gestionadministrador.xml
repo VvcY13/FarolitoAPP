@@ -76,17 +76,9 @@
 
         <Button
             android:layout_marginStart="5dp"
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/ModificarAdmin"
-            android:hint="Modificar"
-            android:textColorHint="@color/black"
-            android:backgroundTint="@color/celeste"
-            android:textSize="15dp"/>
-        <Button
-            android:layout_marginStart="5dp"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
+            android:layout_weight="1"
             android:id="@+id/BorrarAdmin"
             android:backgroundTint="@color/celeste"
             android:hint="Borrar"
@@ -95,7 +87,8 @@
 
         <Button
             android:layout_marginStart="5dp"
-            android:layout_width="130dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/AgregarAdmin"
             android:hint="Agregar"
@@ -103,12 +96,37 @@
             android:backgroundTint="@color/celeste"
             android:textSize="15dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingEnd="70dp"
+            android:textAlignment="center"
+            android:text="Id"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuario"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:paddingEnd="80dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/listaAdmin"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"/>
 
 </LinearLayout>

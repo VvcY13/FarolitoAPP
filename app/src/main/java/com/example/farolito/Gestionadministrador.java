@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class Gestionadministrador extends AppCompatActivity {
 
     private Button agregarAdministrador;
-    private Button modificarAdmin;
+
     private Button borrarAdmin;
     private Button buscarAdmin;
     private EditText idadmin;
@@ -42,7 +42,7 @@ public class Gestionadministrador extends AppCompatActivity {
         setContentView(R.layout.activity_gestionadministrador);
 
         agregarAdministrador = findViewById(R.id.AgregarAdmin);
-        modificarAdmin = findViewById(R.id.ModificarAdmin);
+
         borrarAdmin = findViewById(R.id.BorrarAdmin);
         listaAdmins = findViewById(R.id.listaAdmin);
         buscarAdmin = findViewById(R.id.buscar);

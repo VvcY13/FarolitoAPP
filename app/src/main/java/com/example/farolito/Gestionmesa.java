@@ -2,17 +2,20 @@ package com.example.farolito;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.farolito.Entidades.Administrador;
 import com.example.farolito.Entidades.Mesa;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +29,7 @@ import java.util.ArrayList;
 public class Gestionmesa extends AppCompatActivity {
     private Button agregarmesa,modificarmesa,borrarmesa,buscarMesa;
     private EditText idmesa,getubicacionmesa;
-
+    private ArrayList<Mesa> listamesa;
     private ListView listamesas;
 
     @Override
@@ -41,9 +44,11 @@ public class Gestionmesa extends AppCompatActivity {
         idmesa = findViewById(R.id.txtingresarmesaId);
         getubicacionmesa = findViewById(R.id.txtmesaencontrado);
 
+
         listarMesa();
         BuscarMesa();
         BorrarMesa();
+
 
         agregarmesa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +93,21 @@ public class Gestionmesa extends AppCompatActivity {
 
             }
         });
+      listamesas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+              Mesa mesa = listamesa.get(i);
+              AlertDialog.Builder a = new AlertDialog.Builder(Gestionmesa.this);
+              a.setCancelable(true);
+              a.setTitle("Mesa");
+              String msg = "ID : " +mesa.getIdMesa() + "\n\n";
+              msg += "Ubicacion : " + mesa.getUbicacionMesa() + "\n\n";
+              msg += "Capacidad : " + mesa.getCapacidadMesa() + " Personas "+ "\n\n";
 
+              a.setMessage(msg);
+              a.show();
+          }
+      });
     }
     public void BuscarMesa() {
         buscarMesa.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +146,7 @@ public class Gestionmesa extends AppCompatActivity {
                 }
             }
         });
+
     }
     public void BorrarMesa(){
         borrarmesa.setOnClickListener(new View.OnClickListener() {
@@ -171,4 +191,5 @@ public class Gestionmesa extends AppCompatActivity {
             }
         });
     }
+
 }

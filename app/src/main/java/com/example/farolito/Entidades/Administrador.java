@@ -70,7 +70,7 @@ public class Administrador {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                " usuario='" + usuario + '\'' ;
+        return id +"                                             "+
+                usuario  ;
     }
 }

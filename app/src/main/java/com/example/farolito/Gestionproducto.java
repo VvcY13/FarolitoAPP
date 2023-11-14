@@ -2,18 +2,21 @@ package com.example.farolito;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.farolito.Entidades.Administrador;
 import com.example.farolito.Entidades.Producto;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -89,6 +92,21 @@ public class Gestionproducto extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        listaproductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Producto producto = listaproducto.get(i);
+                AlertDialog.Builder a = new AlertDialog.Builder(Gestionproducto.this);
+                a.setCancelable(true);
+                a.setTitle("Producto Seleccionado");
+                String msg = "Nombre : " +producto.getNombreProducto() + "\n\n";
+                msg += "precio : " + producto.getPrecioProducto() + "\n\n";
+
+
+                a.setMessage(msg);
+                a.show();
             }
         });
     }

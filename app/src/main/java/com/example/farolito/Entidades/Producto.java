@@ -80,6 +80,6 @@ public class Producto {
 
     @Override
     public String toString() {
-        return idProducto + " " + nombreProducto + " S/ " + precioProducto + " " + categoriaProducto + " " + disponibilidadProducto;
+        return idProducto + "        " + nombreProducto + "      S/" + precioProducto;
     }
 }

@@ -70,6 +70,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return idUsuario + " " + usuarioUser;
+        return idUsuario + "                                             " + usuarioUser;
     }
 }

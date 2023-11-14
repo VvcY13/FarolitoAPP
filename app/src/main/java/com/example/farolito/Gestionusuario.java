@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Gestionusuario extends AppCompatActivity {
-    private Button agregarUser,borrarUser,modificarUser,buscarusuariouser;
+    private Button agregarUser,borrarUser,buscarusuariouser;
     private ListView listaUsuarios;
     private EditText txtbuscarid,txtusuarioencontrado;
 
@@ -36,7 +36,6 @@ public class Gestionusuario extends AppCompatActivity {
         setContentView(R.layout.activity_gestionusuario);
         agregarUser = findViewById(R.id.AgregarUser);
         borrarUser = findViewById(R.id.BorrarUser);
-        modificarUser = findViewById(R.id.ModificarUser);
         listaUsuarios = findViewById(R.id.listaUser);
         buscarusuariouser = findViewById(R.id.buscarusuarioid);
         txtbuscarid = findViewById(R.id.txtingresarusuarioId);
