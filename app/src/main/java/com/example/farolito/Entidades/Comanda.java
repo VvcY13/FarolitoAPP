@@ -5,11 +5,12 @@ import java.util.List;
 
 public class Comanda {
     private  static Comanda instance;
-    private int idComanda;
+
     private double total;
     private  int idEmpleado;
     private int idMesa;
     private List<DetalleComanda> detalle;
+
 
     private Comanda() {
         detalle = new ArrayList<>();
@@ -24,21 +25,15 @@ public class Comanda {
         }
         return instance;
     }
+    public static void resetInstance() {
+        instance = null;
+    }
 
-    public Comanda(int idComanda, double total, int idEmpleado, int idMesa, List<DetalleComanda> detalle) {
-        this.idComanda = idComanda;
+    public Comanda(double total, int idEmpleado, int idMesa, List<DetalleComanda> detalle) {
         this.total = total;
         this.idEmpleado = idEmpleado;
         this.idMesa = idMesa;
         this.detalle = detalle;
-    }
-
-    public int getIdComanda() {
-        return idComanda;
-    }
-
-    public void setIdComanda(int idComanda) {
-        this.idComanda = idComanda;
     }
 
     public double getTotal() {
@@ -76,11 +71,16 @@ public class Comanda {
     @Override
     public String toString() {
         return "Comanda{" +
-                "idComanda=" + idComanda +
                 ", total=" + total +
                 ", idEmpleado=" + idEmpleado +
                 ", idMesa=" + idMesa +
                 ", detalle=" + detalle +
                 '}';
+    }
+    public void addDetalle(DetalleComanda detalle) {
+        if (this.detalle == null) {
+            this.detalle = new ArrayList<>();
+        }
+        this.detalle.add(detalle);
     }
 }

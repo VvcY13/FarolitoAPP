@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.farolito.Entidades.Comanda;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -67,6 +68,8 @@ public class SalonPrincipal extends AppCompatActivity {
                     public void onClick(View view) {
                         idmesaseleccionada = idMesa;
                         System.out.println(idmesaseleccionada);
+                        Comanda.resetInstance();
+
                         Intent ventanadentrodemesa = new Intent(getApplicationContext(),Mesas.class);
                         ventanadentrodemesa.putExtra("idmesaseleccionado", idmesaseleccionada);
                         ventanadentrodemesa.putExtra("idusuario", identifier);
