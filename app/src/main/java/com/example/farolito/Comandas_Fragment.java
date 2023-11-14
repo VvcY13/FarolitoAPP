@@ -36,7 +36,7 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
     private int idMesa;
     private int idEmpleado;
 
-      public Comandas_Fragment() {
+        public Comandas_Fragment() {
     }
     public static Comandas_Fragment newInstance(String param1, String param2) {
         Comandas_Fragment fragment = new Comandas_Fragment();
@@ -63,6 +63,8 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
         enviarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Comanda comanda = Comanda.getInstance();
                 comanda.setIdEmpleado(idEmpleado);
                 comanda.setIdMesa(idMesa);
@@ -73,9 +75,10 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
                 for (DetalleComanda detalle : listaProductosSeleccionados) {
                     comanda.addDetalle(detalle);
                     total += detalle.getSubtotal();
+                    comanda.setTotal(total);
                 }
 
-                comanda.setTotal(total);
+                Comanda.resetInstance();
 
                 detalleComandaAdapter.notifyDataSetChanged();
 
@@ -88,9 +91,6 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
                 });
             }
         });
-
-
-
 
         return view;
      }

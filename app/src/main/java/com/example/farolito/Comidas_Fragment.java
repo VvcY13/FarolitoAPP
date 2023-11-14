@@ -206,6 +206,7 @@ public class Comidas_Fragment extends Fragment implements  productoSeleccionadoL
 
 
 
+
         Log.d("MesafragmentComidas", "Lista de productos actualizada");
         if (getActivity() instanceof productoSeleccionadoListener) {
             ((productoSeleccionadoListener) getActivity()).productoSeleccionado(detalleComanda);
