@@ -75,16 +75,8 @@
 
         <Button
             android:layout_marginStart="5dp"
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:id="@+id/ModificarProducto"
-            android:hint="Modificar"
-            android:textColorHint="@color/black"
-            android:backgroundTint="@color/celeste"
-            android:textSize="15dp"/>
-        <Button
-            android:layout_marginStart="5dp"
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="50dp"
             android:id="@+id/BorrarProducto"
             android:hint="Borrar"
@@ -94,7 +86,8 @@
 
         <Button
             android:layout_marginStart="5dp"
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="50dp"
             android:id="@+id/AgregarProducto"
             android:hint="Agregar"

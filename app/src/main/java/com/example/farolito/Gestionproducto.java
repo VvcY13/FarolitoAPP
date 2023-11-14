@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +32,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Gestionproducto extends AppCompatActivity {
-    private Button agregarproducto,modificarproducto,borrarproducto,buscarProducto;
+    private Button agregarproducto, borrarproducto, buscarProducto;
     private EditText idproductobuscado, productoencontrado;
     private ListView listaproductos;
 
@@ -42,7 +43,6 @@ public class Gestionproducto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionproducto);
         agregarproducto = findViewById(R.id.AgregarProducto);
-        modificarproducto = findViewById(R.id.ModificarProducto);
         borrarproducto = findViewById(R.id.BorrarProducto);
         listaproductos = findViewById(R.id.listaProducto);
         buscarProducto = findViewById(R.id.buscaproductoid);
@@ -57,16 +57,17 @@ public class Gestionproducto extends AppCompatActivity {
         agregarproducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ventanaAgregarProductos = new Intent(getApplicationContext(),Registroproducto.class);
+                Intent ventanaAgregarProductos = new Intent(getApplicationContext(), Registroproducto.class);
                 startActivity(ventanaAgregarProductos);
             }
         });
     }
-    public void listarProductos(){
+
+    public void listarProductos() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference dbref = db.getReference(Producto.class.getSimpleName());
         ArrayList<Producto> listaproducto = new ArrayList<Producto>();
-        ArrayAdapter<Producto> adapterproducto = new ArrayAdapter<Producto>(context, android.R.layout.simple_list_item_1,listaproducto);
+        ArrayAdapter<Producto> adapterproducto = new ArrayAdapter<Producto>(context, android.R.layout.simple_list_item_1, listaproducto);
         listaproductos.setAdapter(adapterproducto);
 
         dbref.addChildEventListener(new ChildEventListener() {
@@ -110,15 +111,17 @@ public class Gestionproducto extends AppCompatActivity {
                 AlertDialog.Builder a = new AlertDialog.Builder(Gestionproducto.this);
                 a.setCancelable(true);
                 a.setTitle("Producto Seleccionado");
-                String msg = "Nombre : " +producto.getNombreProducto() + "\n\n";
+                String msg = "Nombre : " + producto.getNombreProducto() + "\n\n";
                 msg += "precio : " + producto.getPrecioProducto() + "\n\n";
-
+                msg += "categoria : " + producto.getCategoriaProducto() + "\n\n";
 
                 a.setMessage(msg);
                 a.show();
+
             }
         });
     }
+
     public void BuscarProducto() {
         buscarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,18 +149,15 @@ public class Gestionproducto extends AppCompatActivity {
                                 Toast.makeText(Gestionproducto.this, "Id no existente", Toast.LENGTH_SHORT).show();
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
-
                 }
             }
         });
     }
-    public void BorrarProducto(){
+    public void BorrarProducto() {
         borrarproducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,7 +188,6 @@ public class Gestionproducto extends AppCompatActivity {
                                 Toast.makeText(Gestionproducto.this, "Id no existente", Toast.LENGTH_SHORT).show();
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 
@@ -197,7 +196,6 @@ public class Gestionproducto extends AppCompatActivity {
 
                 }
             }
-
         });
     }
 }

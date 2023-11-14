@@ -30,7 +30,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Gestionmesa extends AppCompatActivity {
-    private Button agregarmesa,modificarmesa,borrarmesa,buscarMesa;
+    private Button agregarmesa,borrarmesa,buscarMesa;
     private EditText idmesa,getubicacionmesa;
     private ArrayList<Mesa> listamesa;
     private ListView listamesas;
@@ -42,7 +42,6 @@ public class Gestionmesa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionmesa);
         agregarmesa = findViewById(R.id.AgregarMesa);
-        modificarmesa = findViewById(R.id.ModificarMesa);
         borrarmesa = findViewById(R.id.BorrarMesa);
         listamesas = findViewById(R.id.listaMesa);
         buscarMesa = findViewById(R.id.buscarmesaid);
