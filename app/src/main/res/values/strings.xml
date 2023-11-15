@@ -10,8 +10,10 @@
     <string name="previous">Previous</string>
     <string-array name="Categorias">
         <item>Entrada</item>
-        <item>Fondo</item>
-        <item>Piqueo</item>
+        <item>Ceviches</item>
+        <item>Arroces</item>
+        <item>Chicharrones</item>
+        <item>Combinados</item>
         <item>Bebida</item>
     </string-array>
     <string-array name="Tipo">
@@ -21,8 +23,6 @@
     <string-array name="Ubicacion">
         <item>Salon</item>
         <item>Terraza</item>
-        <item>Bar</item>
-        <item>Segundo Piso</item>
     </string-array>
 
 
