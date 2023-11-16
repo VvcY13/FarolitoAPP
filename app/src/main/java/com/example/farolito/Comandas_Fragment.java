@@ -96,6 +96,19 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         mesasRef = database.getReference("Mesa");
 
+                        DatabaseReference backupRef = FirebaseDatabase.getInstance().getReference("ComandasBackup");
+                        backupRef.push().setValue(comanda).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Log.d(TAG, "buckup creado");
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "error buckup");
+                            }
+                        });
+
 
                         mesasRef.orderByChild("idMesa").equalTo(idMesa).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
