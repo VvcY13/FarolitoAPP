@@ -40,7 +40,6 @@ import java.util.List;
 public class Comidas_Fragment extends Fragment implements  productoSeleccionadoListener {
 
     private LinearLayout linearLayoutComidas;
-
     private DatabaseReference ProductosRef;
     private List<Producto> listaDeComidas = new ArrayList<>();
     private List<DetalleComanda> listaProductosSeleccionados = new ArrayList<>();
@@ -48,7 +47,7 @@ public class Comidas_Fragment extends Fragment implements  productoSeleccionadoL
 
 
     public Comidas_Fragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -167,7 +166,7 @@ public class Comidas_Fragment extends Fragment implements  productoSeleccionadoL
                 String comentario = comentarioEditText.getText().toString();
 
                 if(comentario.isEmpty()){
-                    comentario=null;
+                    comentario="normal";
                 }
                 if (!cantidadString.isEmpty()) {
                     cantidad = Integer.parseInt(cantidadString);
