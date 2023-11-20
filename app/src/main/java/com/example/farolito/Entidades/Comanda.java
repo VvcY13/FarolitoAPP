@@ -1,5 +1,8 @@
 package com.example.farolito.Entidades;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +12,16 @@ public class Comanda {
     private double total;
     private  int idEmpleado;
     private int idMesa;
+    private LocalDateTime fecha;
     private List<DetalleComanda> detalle;
 
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
 
     private Comanda() {
         detalle = new ArrayList<>();
@@ -29,11 +40,12 @@ public class Comanda {
         instance = null;
     }
 
-    public Comanda(double total, int idEmpleado, int idMesa, List<DetalleComanda> detalle) {
+    public Comanda(double total, int idEmpleado, int idMesa, List<DetalleComanda> detalle, LocalDateTime fecha) {
         this.total = total;
         this.idEmpleado = idEmpleado;
         this.idMesa = idMesa;
         this.detalle = detalle;
+        this.fecha = fecha;
     }
 
     public double getTotal() {
@@ -59,6 +71,7 @@ public class Comanda {
     public void setIdMesa(int idMesa) {
         this.idMesa = idMesa;
     }
+
 
     public List<DetalleComanda> getDetalle() {
         return detalle;

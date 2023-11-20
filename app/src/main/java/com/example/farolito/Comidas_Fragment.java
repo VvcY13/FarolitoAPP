@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -168,10 +169,11 @@ public class Comidas_Fragment extends Fragment implements  productoSeleccionadoL
                 if(comentario.isEmpty()){
                     comentario="normal";
                 }
-                if (!cantidadString.isEmpty()) {
+                if (!cantidadString.isEmpty() && TextUtils.isDigitsOnly(cantidadString)) {
                     cantidad = Integer.parseInt(cantidadString);
                 } else {
-                    cantidad=1;
+                   Toast.makeText(getContext(), "Tiene que ingresar una cantidad Numerica", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 DetalleComanda detalleComanda = new DetalleComanda(producto.getIdProducto(), producto.getNombreProducto(), cantidad,comentario,producto.getPrecioProducto()*cantidad);

@@ -30,13 +30,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Comandas_Fragment extends Fragment implements productoSeleccionadoListener, DetalleComandaAdapterCallback {
     private List<DetalleComanda> listaProductosSeleccionados = new ArrayList<>();
     private List<Producto> listaProductos = new ArrayList<>();
     private DatabaseReference mesasRef;
+    LocalDateTime fechaActual = LocalDateTime.now();
 
     private Button enviarPedido;
     private int idMesa;
@@ -75,6 +78,7 @@ public class Comandas_Fragment extends Fragment implements productoSeleccionadoL
                 Comanda comanda = Comanda.getInstance();
                 comanda.setIdEmpleado(idEmpleado);
                 comanda.setIdMesa(idMesa);
+                comanda.setFecha(fechaActual);
 
                 double total = 0.0;
 
