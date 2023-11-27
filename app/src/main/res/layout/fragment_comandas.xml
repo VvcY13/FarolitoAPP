@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/crema"
     tools:context=".Comandas_Fragment">
+
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -57,5 +58,6 @@
         android:hint="Enviar Pedido"
         android:textColorHint="#fff"
         android:textSize="20dp" />
+
 
 </RelativeLayout>

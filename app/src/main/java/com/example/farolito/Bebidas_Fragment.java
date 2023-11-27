@@ -46,9 +46,7 @@ public class Bebidas_Fragment extends Fragment implements  productoSeleccionadoL
     private StorageReference storageReference;
 
     public Bebidas_Fragment() {
-
     }
-
 
     public static Bebidas_Fragment newInstance(String param1, String param2) {
         Bebidas_Fragment fragment = new Bebidas_Fragment();
